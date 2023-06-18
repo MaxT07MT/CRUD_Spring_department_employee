@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Employee</title>
+</head>
+<body>
+
+<p>
+<H1 align="center">Create new employee</H1>
+</p>
+<TABLE BORDER width="70%" align="center">
+    <tr align="center" bgcolor="green" >
+        <TD><H2>Firstname</H2></TD>
+        <TD><H2>Lastname</H2></TD>
+        <TD><H2>Age</H2></TD>
+        <TD><H2>Phone</H2></TD>
+        <TD><H2>Email</H2></TD>
+        <TD><H2>Position</H2></TD>
+    </tr>
+<form th:method="POST" th:action="@{/departments/{depId}/employees/createEmp(depId=${employee.depId})}" th:object="${employee}">
+
+    <td><label for="firstname"></label>
+        <input type="text" placeholder="firstname" required th:field="*{firstname}" id="firstname"/>
+        <div style="color:red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Firstname Error</div></td>
+    <br/>
+    <td><label for="lastname"></label>
+        <input type="text" placeholder="lastname" required th:field="*{lastname}" id="lastname"/>
+        <div style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Lastname Error</div></td>
+    <td><br/>
+        <label for="age"></label>
+        <input type="number" placeholder="input age" min="18" max="59" required pattern="^(?:[2-5][0-9])$" th:field="*{age}" id="age"/>
+        <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div></td>
+    <br/>
+    <td><label for="phone"></label>
+        <input type="text" placeholder="phone" required pattern="^((\+?380)[0-9]{9})$" th:field="*{phone}" id="phone"/>
+        <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</div></td>
+    <br/>
+    <td><label for="email"></label>
+        <input type="text" placeholder="email" required th:field="*{email}" id="email"/>
+        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div></td>
+    <br/>
+    <td><label for="position"></label>
+        <input type="text" placeholder="position" minlength="5" maxlength="150" required th:field="*{position}" id="position"/>
+        <div style="color:red" th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Address Error</div></td>
+    <br/>
+    <td><input type="hidden" th:field="*{depId}"/></td>
+    <tr>
+    <td><input type="submit" value="Create!"/></td>
+    </tr>
+    </form>
+</form>
+
+    <tr>
+        <td><a th:href="@{/departments/{depId}/employees/showEmp(depId=${employee.getDepId()})}">Back to Employees</a></td>
+        <td><button onclick="location.href='/'">Back to Main</button></td>
+        <td><button onclick="location.href='/departments'">Back to Departments</button></td>
+    </tr>
+</TABLE>
+
+
+</body>
+</html>

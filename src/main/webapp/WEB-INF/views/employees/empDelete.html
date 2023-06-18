@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update employee</title>
+</head>
+<body>
+
+<p>
+<H1 align="center">Delete <a th:text="${employee.getFirstname()}">VALUE</a> <a th:text="${employee.getLastname()}">VALUE</a></H1>
+</p>
+<TABLE BORDER width="70%" align="center">
+    <tr align="center" bgcolor="green" >
+        <TD><H2>Firstname</H2></TD>
+        <TD><H2>Lastname</H2></TD>
+        <TD><H2>Age</H2></TD>
+        <TD><H2>Phone</H2></TD>
+        <TD><H2>Email</H2></TD>
+        <TD><H2>Position</H2></TD>
+
+    </tr>
+
+    <form th:method="POST" th:action="@{/departments/{depId}/employees/{id}/del(id=${employee.getId()}, depId=${employee.getDepId()})}" th:object="${employee}">
+        <tr>
+            <td><a th:text="${employee.getFirstname()}">VALUE</a></td>
+            <td><a th:text="${employee.getLastname()}">VALUE</a></td>
+            <td><a th:text="${employee.getAge()}">VALUE</a></td>
+            <td><a th:text="${employee.getPhone()}">VALUE</a></td>
+            <td><a th:text="${employee.getEmail()}">VALUE</a></td>
+            <td><a th:text="${employee.getPosition()}">VALUE</a></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Delete" bgcolor="green"/></td>
+        </tr>
+    </form>
+    <tr>
+        <td><a th:href="@{/departments/{depId}/employees/showEmp(depId=${employee.getDepId()})}">Back to Employees</a></td>
+        <td><button onclick="location.href='/'">Back to Main</button></td>
+        <td><button onclick="location.href='/departments'">Back to Departments</button></td>
+    </tr>
+</TABLE>
+</body>
+</html>

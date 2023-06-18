@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New department</title>
+</head>
+<body>
+<p>
+<H1 align="center">Create New Department</H1>
+
+
+</p>
+<TABLE BORDER width="70%" align="center">
+    <tr align="center" bgcolor="green" >
+        <TD><H2>Name</H2></TD>
+        <TD><H2>Phone</H2></TD>
+        <TD><H2>Email</H2></TD>
+        <TD><H2>Address</H2></TD>
+        <TD><H2>Short Description</H2></TD>
+    </tr>
+<form th:method="POST" th:action="@{/departments}" th:object="${department}">
+    <tr>
+        <td><label for="name"></label>
+            <input type="text" placeholder="name" th:field="*{name}" id="name" class="name" minlength="5" maxlength="30" required th:onmessage="Not Null"/>
+            <div style="color:red" th:if="${#fields.errors('name')}" th:errors="*{name}">Name Error</div>
+            <br/>
+        </td>
+        <td><label for="phone"></label>
+            <input type="text" placeholder="phone" th:field="*{phone}" id="phone" />
+            <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</div>
+            <br/>
+        </td>
+        <td><label for="email"></label>
+            <input type="text" placeholder="Email "  th:field="*{email}" id="email" required/>
+            <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+            <br/>
+        </td>
+        <td><label for="address"></label>
+            <input type="text" placeholder="address" th:field="*{address}" id="address" minlength="5" maxlength="50" required/>
+            <div style="color:red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</div>
+            <br/>
+        </td>
+        <td><label for="description"></label>
+            <input type="text" placeholder="description" th:field="*{description}" id="description" required />
+            <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</div>
+            <br/>
+        </td>
+    <tr>
+        <td><input type="submit" value="Create"/></td>
+    <p th:errors="22ee4${errorMsg}"/>
+    <td th:errors="NNN HHh${department.getName()}"/>
+    <p th:text="ty333ff${department.getName()}"/>
+
+
+</form>
+    <td><button onclick="location.href='/'">Back to Main</button></td>
+    <td><button onclick="location.href='/departments'">Back to Departments</button></td>
+    </tr>
+</TABLE>
+</body>
+</html>

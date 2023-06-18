@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Departments</title>
+</head>
+<body>
+
+    <p>
+    <H1 align="center">Departments</H1>
+    </p>
+<TABLE BORDER width="70%" align="center">
+    <tr align="center" bgcolor="green" >
+        <TD><H2>Name</H2></TD>
+        <TD><H2>Info</H2></TD>
+    </tr>
+    <div th:each="department : ${departments}">
+        <a th:href="@{/departments/{id}(id=${department.getId()})}"></a>
+    <tr>
+    <td><a th:text="${department.getName()}"></a></td>
+    <td><button><a th:href="@{/departments/{id}(id=${department.getId()})}">info</a></button></td>
+
+    </tr>
+</div>
+
+
+    <div>
+
+<tr>
+    <td><button onclick="location.href='/departments/newDep'">Create New Department</button></td>
+    <td><button onclick="location.href='/'">Back to Main</button></td>
+</tr>
+    </div>
+    </table>
+    </div>
+<br/>
+<hr/>
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Employees</title>
+</head>
+<body>
+
+<p>
+<H1 align="center"> Employees  </H1>
+</p>
+<TABLE BORDER width="70%" align="center">
+    <tr align="center" bgcolor="green" >
+        <TD><H2>Name</H2></TD>
+        <TD><H2>DepName</H2></TD>
+        <TD><H2>Info</H2></TD>
+
+    </tr>
+
+
+<div th:each="employee : ${employee}">
+    <a th:href="@{/employees/{id}(id=${employee.getId()})}"></a>
+    <tr>
+        <td><a th:text="${employee.getFirstname()}"> </a> <a th:text="${employee.getLastname()}"></a></td>
+        <td><a th:text="${employee.getDepName()}"></a></td>
+        <td><a th:href="@{/employees/{id}(id=${employee.getId()})}">Info</a></td>
+
+    </tr>
+    </br>
+
+</div>
+
+</div>
+
+<p>
+
+</p>
+
+    <tr>
+        <td><a th:href="@{/departments/{depId}/employees/newEmp(depId=${depId})}">Add New Employee</a></td>
+        <td><button onclick="location.href='/departments'">Back to Departments</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="location.href='/'">Back to Main</button></td>
+    </tr>
+</table>
+<br/>
+<hr/>
+</table>
+
+
+</body>
+</html>

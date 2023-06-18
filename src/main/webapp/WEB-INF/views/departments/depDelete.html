@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<p>
+<H1 align="center"><a th:text="${department.getName()}">VALUE</a></H1>
+
+
+</p>
+<TABLE BORDER width="70%" align="center">
+    <tr align="center" bgcolor="green" >
+        <TD><H2>Name</H2></TD>
+        <TD><H2>Phone</H2></TD>
+        <TD><H2>Email</H2></TD>
+        <TD><H2>Address</H2></TD>
+        <TD><H2>Short Description</H2></TD>
+        <td><h2>Employees</h2></td>
+        <TD><H2>Edit</H2></TD>
+        <TD><H2>Delete</H2></TD>
+    </tr>
+    <form th:method="POST" th:action="@{/departments/{id}/del(id=${department.getId()})}" th:object="${department}">
+    <tr>
+        <td><a th:text="${department.getName()}">VALUE</a></td>
+        <td><a th:text="${department.getPhone()}">VALUE</a></td>
+        <td><a th:text="${department.getEmail()}">VALUE</a></td>
+        <td><a th:text="${department.getAddress()}">VALUE</a></td>
+        <td><a th:text="${department.getDescription()}">VALUE</a></td>
+        <td><a th:href="@{/employees/{depId}/showEmp(depId=${department.getId()})}">EmplFF</a></td>
+        <td><a th:href="@{/departments/{id}/editDep(id=${department.getId()})}">Edit</a></td>
+        <td><a th:href="@{/departments/{id}/deleteDep(id=${department.getId()})}">Delete</a></td>
+    </tr>
+        <tr>
+            <td><input type="submit" value="Delete" bgcolor="green"/></td>
+        </tr>
+    </form>
+    <tr>
+        <td><button onclick="location.href='/'">Back to Main</button></td>
+        <td><button onclick="location.href='/departments'">Back to Departments</button></td>
+    </tr>
+
+</TABLE>
+
+</body>
+</html>
